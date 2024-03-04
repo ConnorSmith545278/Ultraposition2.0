@@ -12,9 +12,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float dragFactor;
+    [SerializeField] private float airDrag;
     [SerializeField] private float jumpTime;
     private float jumpTimeCounter;
     private bool isJumping;
+    [SerializeField] private float maxVelocity;
 
     // Start is called before the first frame update
     void Start()
@@ -24,9 +26,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (horizontal != 0f)
+        if (horizontal != 0f && rb.velocity.x < maxVelocity && rb.velocity.x > -maxVelocity)
         {
-            rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+            rb.AddForce(new Vector2(horizontal * speed * Time.deltaTime,0),ForceMode2D.Impulse);
+        } else if (!IsGrounded())
+        {
+            if (rb.velocity.x > 0f)
+            {
+                rb.velocity = new Vector2(rb.velocity.x - airDrag, rb.velocity.y);
+            }
+            if (rb.velocity.x < 0f)
+            {
+                rb.velocity = new Vector2(rb.velocity.x + airDrag, rb.velocity.y);
+            }
         }
         if (IsGrounded())
         {
@@ -45,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(Time.deltaTime);
         horizontal = Input.GetAxisRaw("Horizontal");
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
@@ -55,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if(jumpTimeCounter > 0f)
             {
-                rb.velocity = Vector2.up * jumpStrength;
+                rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
                 jumpTimeCounter -= Time.deltaTime;
             }
         }
