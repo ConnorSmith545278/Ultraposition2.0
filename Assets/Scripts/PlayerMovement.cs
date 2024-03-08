@@ -17,11 +17,13 @@ public class PlayerMovement : MonoBehaviour
     private float jumpTimeCounter;
     private bool isJumping;
     [SerializeField] private float maxVelocity;
+    public Vector2 checkpoint;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        checkpoint = gameObject.transform.position;
     }
 
     private void FixedUpdate()
@@ -80,5 +82,10 @@ public class PlayerMovement : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+    }
+
+    public void Death()
+    {
+        gameObject.transform.position = checkpoint;
     }
 }

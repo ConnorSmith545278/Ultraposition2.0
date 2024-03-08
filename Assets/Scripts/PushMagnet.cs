@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 
-public class Magnet : MonoBehaviour
+public class PushMagnet : MonoBehaviour
 {
     private GameObject player;
     [SerializeField] private float pull = 20;
@@ -26,12 +25,12 @@ public class Magnet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gameObject.GetComponent<BoxCollider2D>().enabled == true)
+        if (gameObject.GetComponent<BoxCollider2D>().enabled == true)
         {
-            system.startSpeed = -5;
+            system.startSpeed = 5;
             system.Play(true);
             Vector3 pullVector = new Vector3(0, pull, 0);
-            if(Vector2.Distance(player.transform.position, gameObject.transform.position)<pullRange)
+            if (Vector2.Distance(player.transform.position, gameObject.transform.position) < pullRange)
             {
                 pullVector = (player.transform.position - gameObject.transform.position) * pull;
                 player.GetComponent<Rigidbody2D>().AddForce(pullVector);
@@ -39,7 +38,7 @@ public class Magnet : MonoBehaviour
         }
         else
         {
-            system.startSpeed = -1;
+            system.startSpeed = 1;
         }
     }
 }
