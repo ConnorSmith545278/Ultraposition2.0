@@ -18,6 +18,10 @@ public class PlayerMovement : MonoBehaviour
     private bool isJumping;
     [SerializeField] private float maxVelocity;
     public Vector2 checkpoint;
+    public float delay;
+
+    public delegate void deathAction();
+    public static event deathAction onDeath;
 
     // Start is called before the first frame update
     void Start()
@@ -59,23 +63,31 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        if(delay < 0f)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
-            isJumping = true;
-        }
-        if (Input.GetKey(KeyCode.Space) && isJumping)
-        {
-            if(jumpTimeCounter > 0f)
+            horizontal = Input.GetAxisRaw("Horizontal");
+            if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
-                jumpTimeCounter -= Time.deltaTime;
+                isJumping = true;
+            }
+            if (Input.GetKey(KeyCode.Space) && isJumping)
+            {
+                if (jumpTimeCounter > 0f)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, jumpStrength);
+                    jumpTimeCounter -= Time.deltaTime;
+                }
+            }
+            if (Input.GetKeyUp(KeyCode.Space) && isJumping)
+            {
+                isJumping = false;
             }
         }
-        if(Input.GetKeyUp(KeyCode.Space) && isJumping)
+        else
         {
-            isJumping = false;
+            delay -= Time.deltaTime;
+            rb.velocity = Vector2.zero;
         }
     }
 
@@ -87,5 +99,9 @@ public class PlayerMovement : MonoBehaviour
     public void Death()
     {
         gameObject.transform.position = checkpoint;
+        if(onDeath != null)
+        {
+            onDeath();
+        }
     }
 }
