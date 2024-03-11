@@ -28,6 +28,7 @@ public class Switchers : MonoBehaviour
         {
             pinkCols.Add(pinkPlatform.GetComponent<BoxCollider2D>());
         }
+        Switch();
     }
 
     // Update is called once per frame
@@ -35,53 +36,57 @@ public class Switchers : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            switch (currentSwitch)
-            {
-                case 0:
+            Switch();
+        }
+    }
+    private void Switch()
+    {
+        switch (currentSwitch)
+        {
+            case 0:
 
-                    foreach(var col in blueCols)
-                    {
-                        col.enabled = false;
-                    }
-                    foreach(var  bluePlatform in bluePlatforms)
-                    {
-                        bluePlatform.GetComponent<SpriteRenderer>().color = new Color(0.28f, 0.32f,1,0.2f);
-                    }
-                    foreach(var col in pinkCols)
-                    {
-                        col.enabled = true;
-                    }
-                    foreach (var pinkPlatform in pinkPlatforms)
-                    {
-                        pinkPlatform.GetComponent<SpriteRenderer>().color = new Color(1f, 0.4f, 1, 1f);
-                    }
-                    break;
+                foreach (var col in blueCols)
+                {
+                    col.enabled = false;
+                }
+                foreach (var bluePlatform in bluePlatforms)
+                {
+                    bluePlatform.GetComponent<SpriteRenderer>().color = new Color(0.28f, 0.32f, 1, 0.2f);
+                }
+                foreach (var col in pinkCols)
+                {
+                    col.enabled = true;
+                }
+                foreach (var pinkPlatform in pinkPlatforms)
+                {
+                    pinkPlatform.GetComponent<SpriteRenderer>().color = new Color(1f, 0.4f, 1, 1f);
+                }
+                break;
 
-                case 1:
-                    foreach (var col in blueCols)
-                    {
-                        col.enabled = true;
-                    }
-                    foreach (var bluePlatform in bluePlatforms)
-                    {
-                        bluePlatform.GetComponent<SpriteRenderer>().color = new Color(0.28f, 0.32f, 1, 1);
-                    }
-                    foreach (var col in pinkCols)
-                    {
-                        col.enabled = false;
-                    }
-                    foreach (var pinkPlatform in pinkPlatforms)
-                    {
-                        pinkPlatform.GetComponent<SpriteRenderer>().color = new Color(1f, 0.4f, 1, 0.2f);
-                    }
-                    break;
+            case 1:
+                foreach (var col in blueCols)
+                {
+                    col.enabled = true;
+                }
+                foreach (var bluePlatform in bluePlatforms)
+                {
+                    bluePlatform.GetComponent<SpriteRenderer>().color = new Color(0.28f, 0.32f, 1, 1);
+                }
+                foreach (var col in pinkCols)
+                {
+                    col.enabled = false;
+                }
+                foreach (var pinkPlatform in pinkPlatforms)
+                {
+                    pinkPlatform.GetComponent<SpriteRenderer>().color = new Color(1f, 0.4f, 1, 0.2f);
+                }
+                break;
 
-            }
-            currentSwitch++;
-            if(currentSwitch > switchCount)
-            {
-                currentSwitch = 0;
-            }
+        }
+        currentSwitch++;
+        if (currentSwitch > switchCount)
+        {
+            currentSwitch = 0;
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BouncePlatform : MonoBehaviour
 {
-    private float shotStrength = 25;
+    [SerializeField] private float shotStrength;
     private Vector3 shotOriginal;
     private Vector3 shot;
     private float zr;
