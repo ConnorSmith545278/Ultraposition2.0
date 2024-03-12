@@ -123,7 +123,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: WarningScreenBig
     originalName: 
-    pivot: {x: 0.4918699, y: -0.4166667}
+    pivot: {x: 0.4918699, y: -0.2556818}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
@@ -131,7 +131,7 @@ ScriptedImporter:
       x: 4
       y: 4
       width: 246
-      height: 156
+      height: 176
     spriteID: 9ff9e6f0f2154e54295a6ab593e932f7
     spriteBone: []
     spriteOutline: []
@@ -154,9 +154,9 @@ ScriptedImporter:
       frameIndex: 0
       cellRect:
         x: 7
-        y: 65
+        y: 45
         width: 246
-        height: 156
+        height: 176
       spriteId: 9ff9e6f0f2154e54295a6ab593e932f7
     linkedCells: []
     parentIndex: -1

@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class Switchers : MonoBehaviour
 {
+    [SerializeField] public bool switchUnlocked;
     GameObject[] bluePlatforms;
     GameObject[] pinkPlatforms;
-    private int switchCount = 1;
-    private int currentSwitch;
+    public int switchCount = 1;
+    private int currentSwitch = 1;
     private List<BoxCollider2D> blueCols = new List<BoxCollider2D>();
     private List<BoxCollider2D> pinkCols = new List<BoxCollider2D>();
 
@@ -34,12 +35,12 @@ public class Switchers : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow)&& switchUnlocked)
         {
             Switch();
         }
     }
-    private void Switch()
+    public void Switch()
     {
         switch (currentSwitch)
         {

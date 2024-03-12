@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class WarningSign : MonoBehaviour
@@ -10,18 +11,27 @@ public class WarningSign : MonoBehaviour
     [SerializeField] private GameObject target;
     [SerializeField] private GameObject target2;
     [SerializeField] private GameObject warningIcon;
+    [SerializeField] private ParticleSystem Particles1;
+    [SerializeField] private ParticleSystem Particles2;
+    [SerializeField] private GameObject switcher;
     [SerializeField] private float growthRate = 0.1f;
+    private GameObject player;
     private Vector2 targetPosition;
     private Vector2 targetPosition2;
     private bool screenVisible;
     private bool moveUp;
-    private bool activated = true;
+    private bool activated = false;
+    private float animLength = 3;
+    private float particleTimer;
+    private bool hasEnded;
 
     // Start is called before the first frame update
     void Start()
     {
         targetPosition = target.transform.position;
         targetPosition2 = target2.transform.position;
+        player = GameObject.FindWithTag("Player");
+        particleTimer = animLength;
     }
 
     // Update is called once per frame
@@ -47,11 +57,28 @@ public class WarningSign : MonoBehaviour
                 moveUp  = true;
                 screenVisible = false;
                 activated = true;
+                interactable = false;
+                player.GetComponent<PlayerMovement>().delay = animLength+0.2f;
+                Particles1.Play();
+                Particles2.Play();
             }
         }
         if (moveUp)
         {
             warningIcon.transform.position = Vector3.Slerp(warningIcon.transform.position, new Vector3(targetPosition2.x, targetPosition2.y, -1f), growthRate/2);
+        }
+        if (activated)
+        {
+            if (!hasEnded)
+            {
+                player.transform.position = Vector3.Slerp(player.transform.position, new Vector3(targetPosition.x, targetPosition.y, -1f), growthRate);
+                particleTimer -= Time.deltaTime;
+                if (particleTimer < 0f)
+                {
+                    End();
+                }
+            }
+
         }
     }
 
@@ -68,5 +95,14 @@ public class WarningSign : MonoBehaviour
         {
             interactable = false;
         }
+    }
+
+    private void End()
+    {
+        Particles1.Stop();
+        Particles2.Stop();
+        hasEnded = true;
+        switcher.GetComponent<Switchers>().Switch();
+        switcher.GetComponent<Switchers>().switchUnlocked = true;
     }
 }
