@@ -52,7 +52,7 @@ public class Switchers : MonoBehaviour
                 }
                 foreach (var bluePlatform in bluePlatforms)
                 {
-                    bluePlatform.GetComponent<SpriteRenderer>().color = new Color(0.28f, 0.32f, 1, 0.2f);
+                    bluePlatform.GetComponent<SpriteRenderer>().color = new Color(0.28f, 0.32f, 1, 0.05f);
                 }
                 foreach (var col in pinkCols)
                 {
@@ -79,7 +79,7 @@ public class Switchers : MonoBehaviour
                 }
                 foreach (var pinkPlatform in pinkPlatforms)
                 {
-                    pinkPlatform.GetComponent<SpriteRenderer>().color = new Color(1f, 0.4f, 1, 0.2f);
+                    pinkPlatform.GetComponent<SpriteRenderer>().color = new Color(1f, 0.4f, 1, 0.05f);
                 }
                 break;
 

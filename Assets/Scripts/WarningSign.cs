@@ -11,6 +11,7 @@ public class WarningSign : MonoBehaviour
     [SerializeField] private GameObject target;
     [SerializeField] private GameObject target2;
     [SerializeField] private GameObject warningIcon;
+    [SerializeField] private Camera mainCamera;
     [SerializeField] private ParticleSystem Particles1;
     [SerializeField] private ParticleSystem Particles2;
     [SerializeField] private GameObject switcher;
@@ -59,6 +60,7 @@ public class WarningSign : MonoBehaviour
                 activated = true;
                 interactable = false;
                 player.GetComponent<PlayerMovement>().delay = animLength+0.2f;
+                mainCamera.GetComponent<CamShake>().shakeTime = animLength;
                 Particles1.Play();
                 Particles2.Play();
             }

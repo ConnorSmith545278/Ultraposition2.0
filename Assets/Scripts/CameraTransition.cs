@@ -7,6 +7,7 @@ public class CameraTransition : MonoBehaviour
     private GameObject cameraHandler;
     [SerializeField] private GameObject thisAnchor;
     [SerializeField] private float transitionDelay;
+    [SerializeField] public float camSize;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,5 +31,6 @@ public class CameraTransition : MonoBehaviour
                 collision.gameObject.GetComponent<PlayerMovement>().delay = transitionDelay;
             }
         }
+        cameraHandler.GetComponent <AnchorHandler>().cameraSize = camSize;
     }
 }
