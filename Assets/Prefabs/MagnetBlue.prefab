@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcb573ee0aec624439232edc960219ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pull: -30
+  pull: -40
   pullMax: 0
   pullRange: 5.43
   circle: {fileID: 6644637489880390693}
