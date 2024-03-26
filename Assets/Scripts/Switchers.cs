@@ -9,7 +9,7 @@ public class Switchers : MonoBehaviour
     GameObject[] bluePlatforms;
     GameObject[] pinkPlatforms;
     public int switchCount = 1;
-    private int currentSwitch = 1;
+    [SerializeField] private int currentSwitch = 1;
     private List<BoxCollider2D> blueCols = new List<BoxCollider2D>();
     private List<BoxCollider2D> pinkCols = new List<BoxCollider2D>();
 
