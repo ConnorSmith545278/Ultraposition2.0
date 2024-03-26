@@ -93,7 +93,7 @@ MonoBehaviour:
   disturbance: {fileID: 7604123154440747596}
   breakableObject: {fileID: 0}
   ps: {fileID: 0}
-  shakerTime: 0.3
+  shakerTime: 0
 --- !u!1 &3403389793869988231
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ public class AnchorScript : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         minPosition = gameObject.transform.position.y;
+        PlayerMovement.onDeath += Reset;
     }
 
     // Update is called once per frame
@@ -22,5 +23,10 @@ public class AnchorScript : MonoBehaviour
         {
             gameObject.transform.position = new Vector3 (gameObject.transform.position.x, player.transform.position.y);
         }
+    }
+
+    private void Reset()
+    {
+        transform.position = new Vector3(transform.position.x, minPosition, transform.position.z);
     }
 }

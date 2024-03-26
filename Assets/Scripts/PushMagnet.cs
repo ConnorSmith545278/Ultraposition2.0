@@ -32,7 +32,7 @@ public class PushMagnet : MonoBehaviour
             Vector3 pullVector = new Vector3(0, pull, 0);
             if (Vector2.Distance(player.transform.position, gameObject.transform.position) < pullRange)
             {
-                pullVector = (player.transform.position - gameObject.transform.position) * pull;
+                pullVector = (player.transform.position - gameObject.transform.position) * pull * Time.deltaTime * 200;
                 player.GetComponent<Rigidbody2D>().AddForce(pullVector);
             }
         }
