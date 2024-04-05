@@ -37,5 +37,8 @@ public class DeathAnim : MonoBehaviour
     {
         playing = true;
     }
-
+    private void OnDestroy()
+    {
+        PlayerMovement.onDeath -= Play;
+    }
 }

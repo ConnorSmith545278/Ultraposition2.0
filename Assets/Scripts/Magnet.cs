@@ -41,6 +41,5 @@ public class Magnet : MonoBehaviour
         {
             system.startSpeed = -1;
         }
-        Debug.Log(Time.deltaTime);
     }
 }

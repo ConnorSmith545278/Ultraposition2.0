@@ -30,4 +30,9 @@ public class AnchorHorizontal : MonoBehaviour
     {
         transform.position = new Vector3 (minPosition, transform.position.y, transform.position.z);
     }
+
+    private void OnDestroy()
+    {
+        PlayerMovement.onDeath -= Reset;
+    }
 }

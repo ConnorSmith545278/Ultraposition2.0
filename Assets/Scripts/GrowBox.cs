@@ -61,4 +61,9 @@ public class GrowBox : MonoBehaviour
 
         sent = false;
     }
+
+    private void OnDestroy()
+    {
+        PlayerMovement.onDeath -= Reset;
+    }
 }

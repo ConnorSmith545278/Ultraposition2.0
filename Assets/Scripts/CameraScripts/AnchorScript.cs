@@ -29,4 +29,9 @@ public class AnchorScript : MonoBehaviour
     {
         transform.position = new Vector3(transform.position.x, minPosition, transform.position.z);
     }
+
+    private void OnDestroy()
+    {
+        PlayerMovement.onDeath -= Reset;
+    }
 }
