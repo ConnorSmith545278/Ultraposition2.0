@@ -130,8 +130,8 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 258
-      height: 360
+      width: 43
+      height: 60
     spriteID: 14781c453157b764eb46cc9c1cfda487
     spriteBone: []
     spriteOutline: []
@@ -153,10 +153,10 @@ ScriptedImporter:
     - name: Battery
       frameIndex: 0
       cellRect:
-        x: 72
-        y: 12
-        width: 258
-        height: 360
+        x: 12
+        y: 2
+        width: 43
+        height: 60
       spriteId: 14781c453157b764eb46cc9c1cfda487
     linkedCells: []
     parentIndex: -1
@@ -164,4 +164,4 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 384, y: 384}
+  canvasSize: {x: 64, y: 64}
