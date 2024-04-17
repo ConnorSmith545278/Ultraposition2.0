@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WinScreen.unity
     guid: 1fc0ff6885c517f4dab34dd1d85cf0b9
+  - enabled: 1
+    path: Assets/Scenes/ExploitScreen.unity
+    guid: 2f7ee3a24c23c674db8b57db452e5f80
   m_configObjects: {}

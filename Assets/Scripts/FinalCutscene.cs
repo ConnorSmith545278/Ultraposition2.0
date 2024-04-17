@@ -17,6 +17,7 @@ public class FinalCutscene : MonoBehaviour
     [SerializeField] private GameObject spike2;
     [SerializeField] private GameObject spike3;
     [SerializeField] private GameObject spike4;
+    [SerializeField] private int sceneloader;
 
     private GameObject player;
     private Vector2 targetPosition;
@@ -109,5 +110,6 @@ public class FinalCutscene : MonoBehaviour
         Particles1.Stop();
         Particles2.Stop();
         hasEnded = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + sceneloader);
     }
 }

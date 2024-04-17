@@ -7,6 +7,7 @@ TagManager:
   - Blue
   - Pink
   - Spike
+  - GameStateTag
   layers:
   - Default
   - TransparentFX
